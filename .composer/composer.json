@@ -1,0 +1,8 @@
+{
+    "require": {
+        "laravel/envoy": "~1.0",
+        "laravel/installer": "~2.0",
+        "laravel/lumen-installer": "~1.0",
+        "laravel/spark-installer": "~2.0"
+    }
+}
