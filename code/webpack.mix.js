@@ -12,4 +12,5 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   // .less('resources/less/app.less', 'public/css'); // bootstrap3.3.7を使用するために追加
+   .sass('resources/sass/app.scss', 'public/css'); // defaultで入っているbootstrapを使用する時はlessの方をコメントアウトにしてこちらを使用
