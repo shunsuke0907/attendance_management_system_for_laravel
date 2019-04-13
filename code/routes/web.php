@@ -18,3 +18,4 @@
 Route::get('/', 'StaticPagesController@index');
 
 Route::get('/signup', 'UsersController@new');
+Route::post('/signup', 'UsersController@create');
