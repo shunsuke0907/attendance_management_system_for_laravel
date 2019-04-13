@@ -15,7 +15,14 @@
 //     return view('welcome');
 // });
 
+// Top Page
 Route::get('/', 'StaticPagesController@index');
 
-Route::get('/signup', 'UsersController@new');
+// Users
+Route::get('/users', 'UsersController@index');
+Route::get('/users/{id}', 'UsersController@show');
+Route::get('/signup', 'UsersController@add');
 Route::post('/signup', 'UsersController@create');
+Route::get('/users/{id}edit', 'UsersController@edit');
+Route::put('/users/{id}', 'UsersController@update');
+Route::delete('users/:id', 'UsersController@destroy');
