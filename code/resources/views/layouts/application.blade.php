@@ -22,9 +22,11 @@
     </head>
 
     <body>
-        @yield('header')
+        @include('layouts.header')
 
         <div class="container">
+            @include('layouts.flash_message')
+
             @yield('content')
         </div>
     </body>

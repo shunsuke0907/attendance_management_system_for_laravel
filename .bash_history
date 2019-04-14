@@ -79,3 +79,64 @@ npm run dev
 npm install
 git branch -a
 exit
+cd code/
+ls -la
+php artisan make:controller UsersController
+git diff
+cd ../
+git diff
+cd code/
+git remote
+ls -la
+cd ../
+ls -la
+git commit -m "基本のレイアウトの作成完了"
+git branch
+git checkout master
+git branc
+git branch
+git merge feat/add_base_tamplate
+git push origin master
+ls -la
+git branch
+git checkout -b feat/modeling-users
+cd code/
+php artisan make:migration create_users_table
+cd ls -la
+ls -la
+cd database/
+ls -la
+sqlite3 database.sqlite
+touch database/datavase.sqlite
+cd ../
+touch database/database.sqlite
+php artisan migrate
+php artisan make:migration add_column_to_users_table
+php artisan migrate
+cd resources/views/users/
+ls -la
+cd ../../../
+php artisan make:migration create_bases_table
+php artisan migrate
+php artisan make:model Base
+cd ../
+git branch
+git add -A
+git commit -m "ユーザーmodelを作成"
+git checkout master
+git branch
+git merge feat/modeling-users
+git push origin master
+git diff
+git branch
+git checkout -b feat/actions_users
+git branch
+cd code/
+php artisan migrate
+cd ../
+git branch
+git add -A
+git commit -m "[WIP]ユーザー新規作成の実装"
+exit
+cd code/database/
+sqlite3 database.sqlite

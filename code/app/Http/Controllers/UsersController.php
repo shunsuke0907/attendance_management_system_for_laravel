@@ -28,24 +28,17 @@ class UsersController extends Controller
 
     public function create(Request $request)
     {
-        // var_dump('<pre>');
-        // var_dump('create ==============');
-        // var_dump($request->user['name']);
-        // die;
+        // FIXME: ここにバリデーション処理を追加
 
         $user = new User;
         $user->name = $request->user['name'];
         $user->email = $request->user['email'];
+        $user->department = $request->user['department'];
         $user->password = $request->user['password'];
-
-        // var_dump('<pre>');
-        // var_dump('create ==============');
-        // var_dump($user);
-        // die;
-
         $user->save();
+        session()->flash('success', 'ユーザーを作成しました');
 
-        return redirect('users/'.$user->id);
+        return redirect('users/' . $user->id);
     }
 
     public function edit(User $user)
@@ -55,8 +48,11 @@ class UsersController extends Controller
 
     public function update(Request $request, User $user)
     {
+        // FIXME: ここにバリデーション処理を追加
+
         $user->name = $request->name;
         $user->save();
+        session()->flash('success', 'ユーザー情報を更新しました');
 
         return redirect('users/'.$user->id);
     }
@@ -64,6 +60,7 @@ class UsersController extends Controller
     public function destroy()
     {
         $user->delete();
+        session()->flash('success', 'ユーザーを削除しました');
 
         return redirect('users');
     }

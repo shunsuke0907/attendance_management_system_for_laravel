@@ -6,6 +6,8 @@ $headTitle = 'ホーム';
 
 @include('layouts.header')
 
+@include('layouts.flash_message')
+
 @section('content')
 <div class="center jumbotron">
     <h1>勤怠管理システム</h1>

@@ -20,7 +20,7 @@ Route::get('/', 'StaticPagesController@index');
 
 // Users
 Route::get('/users', 'UsersController@index');
-Route::get('/users/{id}', 'UsersController@show');
+Route::get('/users/{user}', 'UsersController@show');
 Route::get('/signup', 'UsersController@add');
 Route::post('/signup', 'UsersController@create');
 Route::get('/users/{id}edit', 'UsersController@edit');

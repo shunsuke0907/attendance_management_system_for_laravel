@@ -1,13 +1,11 @@
 @extends('layouts.application')
 
 @php
-$headTitle = 'アカウント新規作成';
+$headTitle = 'ユーザー新規作成';
 @endphp
 
-@include('layouts.header')
-
 @section('content')
-<h1>アカウント作成</h1>
+<h1>ユーザー新規作成</h1>
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
