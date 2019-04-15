@@ -5,15 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         {{-- CSRF トークン --}}
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="csrf-token" content={{ csrf_token() }}>
 
         <title>
             @isset($headTitle){{ $headTitle }} |@endisset 勤怠システム
         </title>
 
         {{-- CSS --}}
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/custom.scss') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href={{ asset('css/app.css') }}>
+        <link rel="stylesheet" type="text/css" href={{ asset('css/custom.scss') }}>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
 
         <!--[if lt IE 9]>
             <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
@@ -29,5 +30,7 @@
 
             @yield('content')
         </div>
+
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

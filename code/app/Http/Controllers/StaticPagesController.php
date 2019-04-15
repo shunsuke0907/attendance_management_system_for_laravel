@@ -8,7 +8,6 @@ use Illuminate\Http\Response;
 class StaticPagesController extends Controller
 {
     public function index() {
-        $now = date("Y/m/d H:i:s");
-        return view('static_pages.index', compact('now'));
+        return view('static_pages.index');
     }
 }

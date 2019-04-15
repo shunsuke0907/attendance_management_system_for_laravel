@@ -4,14 +4,14 @@
 $headTitle = 'ホーム';
 @endphp
 
-@include('layouts.header')
-
-@include('layouts.flash_message')
-
 @section('content')
 <div class="center jumbotron">
     <h1>勤怠管理システム</h1>
     <a href={{ action('UsersController@add') }} class="btn btn-lg btn-primary">アカウント作成</a>
-    <p>{{ $now }}</p>
+
+    <div id="clock_date"></div> {{-- 日付部分 --}}
+    <div id="clock_time"></div> {{-- 時刻部分 --}}
 </div>
+
+<script type="text/javascript" src="js/clock.js"></script>
 @endsection

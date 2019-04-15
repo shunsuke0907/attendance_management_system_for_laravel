@@ -140,3 +140,25 @@ git commit -m "[WIP]ユーザー新規作成の実装"
 exit
 cd code/database/
 sqlite3 database.sqlite
+cd code/
+php artisan migrate
+ls -la
+cd
+ls -la
+cd code/
+cd ../
+git add -A
+git commit -m "ユーザーの新規作成と詳細ページの実装"
+git branch
+git diff
+git checkout master
+git merge feat/actions_users
+git push origin master
+git checkout feat/actions_users
+git branch
+exit
+cd code/
+sqlite3 database.sqlite
+cd database/
+sqlite3 database.sqlite
+exit

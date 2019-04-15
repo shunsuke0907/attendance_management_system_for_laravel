@@ -18,11 +18,16 @@
 // Top Page
 Route::get('/', 'StaticPagesController@index');
 
+// Sessions
+Route::get('/login', 'SessionsController@add');
+Route::post('/login', 'SessionsController@create');
+Route::get('/logout', 'SessionsController@destroy');
+
 // Users
 Route::get('/users', 'UsersController@index');
-Route::get('/users/{user}', 'UsersController@show');
+Route::get('/users/{id}', 'UsersController@show');
 Route::get('/signup', 'UsersController@add');
 Route::post('/signup', 'UsersController@create');
-Route::get('/users/{id}edit', 'UsersController@edit');
-Route::put('/users/{id}', 'UsersController@update');
-Route::delete('users/:id', 'UsersController@destroy');
+Route::get('/users/{user}/edit', 'UsersController@edit');
+Route::put('/users/{user}', 'UsersController@update');
+Route::delete('users/{id}', 'UsersController@destroy');

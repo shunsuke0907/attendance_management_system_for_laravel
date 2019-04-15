@@ -37,18 +37,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static $rules = [
-        'name' => '',
-        'email' => 'email',
-        'password' => '',
-        'base_id' => '',
-        'is_admin' => '',
-        'position' => '',
-        'employee_number' => '',
-        'card_number' => '',
-        'department' => '',
-        'basic_time' => '',
-        'designated_working_start_time' => '',
-        'designated_working_end_time' => ''
-    ];
+    // public static $rules = [
+    //     'name' => '',
+    //     'email' => 'email',
+    //     'password' => '',
+    //     'base_id' => '',
+    //     'is_admin' => '',
+    //     'position' => '',
+    //     'employee_number' => '',
+    //     'card_number' => '',
+    //     'department' => '',
+    //     'basic_time' => '',
+    //     'designated_working_start_time' => '',
+    //     'designated_working_end_time' => ''
+    // ];
 }
