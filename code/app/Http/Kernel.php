@@ -41,6 +41,11 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        // Custom Middleware
+        'isLogin' => [ \App\Http\Middleware\VerifyLogin::class ],
+        'isCorrectUser' => [ \App\Http\Middleware\VerifyCorrectUser::class ],
+        'isAdmin' => [ \App\Http\Middleware\VerifyAdmin::class ],
     ];
 
     /**

@@ -1,20 +1,13 @@
 <?php
-if (! function_exists('full_title')) {
+if (! function_exists('hogeFuga')) {
 
     /**
-     * ページごとにタイトルを整形して返す
-     * @param string $pageTitle ページごとのタイトル
-     * @return string 条件ごとに整形したタイトル
+     * メソッドの説明
+     * @param 引数の説明
+     * @return 戻り値の説明
      */
-    function full_title($pageTitle = null)
+    function hogeFuga($argument = null)
     {
-        $baseTitle = '勤怠管理システム';
-
-        if ($pageTitle) {
-            return $pageTitle . ' | ' . $baseTitle;
-        } else {
-            return $baseTitle;
-        }
+        //
     }
 }
-?>

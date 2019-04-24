@@ -16,9 +16,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        // FIXME: ここはadminのみ閲覧可能にする / それ以外はhomeへredirect
-
-        $users = User::all();
+        $users = User::orderBy('id')->paginate(5);
 
         return view('users.index', compact('users'));
     }
@@ -31,14 +29,11 @@ class UsersController extends Controller
     public function show($id)
     {
         // FIXME: ここはログイン済みかadminであれば閲覧できる仕様にする
+        // FIXME: adminではない場合は自分のみ閲覧可能にする
 
-        if ($this->isLogin() && $this->isCorrect()) {
-            $user = Auth::user();
+        $user = Auth::user();
 
-            return view('users.show', compact('user'));
-        } else {
-            return redirect('/');
-        }
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -79,11 +74,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        if ($isLogin) {
-            return view('users.edit', compact('user'));
-        } else {
-            return redirect('/');
-        }
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -96,7 +87,10 @@ class UsersController extends Controller
     {
         // FIXME: ここにバリデーション処理を追加
 
-        $user->name = $request->name;
+        if ($request->user['name']) $user->name = $request->user['name'];
+        if ($request->user['email']) $user->email = $request->user['email'];
+        if ($request->user['department']) $user->department = $request->user['department'];
+        if ($request->user['password']) $user->password = $request->user['password'];
         $user->save();
         session()->flash('success', 'ユーザー情報を更新しました');
 
@@ -107,31 +101,44 @@ class UsersController extends Controller
      * ユーザー削除用のメソッド
      * @return void
      */
-    public function destroy()
+    public function destroy(User $user)
     {
+        // var_dump('destroy =================');
+        // var_dump($user->name);
+        // die;
+
+        $userId = $user->id;
+        $userName = $user->name;
+
         $user->delete();
-        session()->flash('success', 'ユーザーを削除しました');
+        session()->flash('success', $userName . 'さん（id: ' . $userId . '）を削除しました');
 
         return redirect('users');
     }
 
     /**
-     * ログインしているユーザーかを判別するメソッド
-     * @return bool
+     * ユーザー情報編集用のメソッド
+     * @param object $request フォームからのリクエスト情報
+     * @param object $user 該当ユーザーの情報
+     * @return void
      */
-    private function isLogin()
+    public function updateUserInfo(Request $request, User $user)
     {
-        return (Auth::user()) ? true : false;
-    }
+        // FIXME: ここにバリデーション処理を追加
 
-    /**
-     * 正しいユーザーかを判別するメソッド
-     * @return bool
-     */
-    private function isCorrect($id)
-    {
-        if (!Auth::user())  return false;
+        if ($request->user['name']) $user->name = $request->user['name'];
+        if ($request->user['email']) $user->email = $request->user['email'];
+        if ($request->user['department']) $user->department = $request->user['department'];
+        if ($request->user['employee_number']) $user->employee_number = $request->user['employee_number'];
+        if ($request->user['card_number']) $user->card_number = $request->user['card_number'];
+        if ($request->user['basic_time']) $user->basic_time = $request->user['basic_time'];
+        if ($request->user['designated_working_start_time']) $user->designated_working_start_time = $request->user['designated_working_start_time'];
+        if ($request->user['designated_working_end_time']) $user->designated_working_end_time = $request->user['designated_working_end_time'];
+        if ($request->user['password']) $user->password = $request->user['password'];
 
-        return ((int) $id === Auth::user()->id) ? true : false;
+        $user->save();
+        session()->flash('success', $user->name . 'さん（id: ' . $user->id . '）の情報を更新しました');
+
+        return redirect('users');
     }
 }

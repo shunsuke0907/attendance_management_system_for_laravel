@@ -11,10 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 // Top Page
 Route::get('/', 'StaticPagesController@index');
 
@@ -24,10 +20,20 @@ Route::post('/login', 'SessionsController@create');
 Route::get('/logout', 'SessionsController@destroy');
 
 // Users
-Route::get('/users', 'UsersController@index');
-Route::get('/users/{id}', 'UsersController@show');
+Route::group(['middleware' => 'isLogin'], function () {
+    Route::group(['middleware' => 'isAdmin'], function () {
+        Route::get('/users', 'UsersController@index');
+        Route::delete('users/{user}', 'UsersController@destroy');
+        Route::put('/users/{user}/info', 'UsersController@updateUserInfo');
+    });
+
+    Route::group(['middleware' => 'isCorrectUser'], function () {
+        Route::get('/users/{id}', 'UsersController@show');
+    });
+
+    Route::get('/users/{user}/edit', 'UsersController@edit');
+    Route::put('/users/{user}', 'UsersController@update');
+});
+
 Route::get('/signup', 'UsersController@add');
 Route::post('/signup', 'UsersController@create');
-Route::get('/users/{user}/edit', 'UsersController@edit');
-Route::put('/users/{user}', 'UsersController@update');
-Route::delete('users/{id}', 'UsersController@destroy');

@@ -13,20 +13,18 @@
 
         {{-- CSS --}}
         <link rel="stylesheet" type="text/css" href={{ asset('css/app.css') }}>
-        <link rel="stylesheet" type="text/css" href={{ asset('css/custom.scss') }}>
-        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-
+        <link rel="stylesheet" type="text/css" href={{ asset('css/custom.css') }}>
         <!--[if lt IE 9]>
             <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
             </script>
         <![endif]-->
     </head>
 
-    <body>
-        @include('layouts.header')
+    <body class="padding_top_5_5_rem">
+        @include('layouts._header')
 
         <div class="container">
-            @include('layouts.flash_message')
+            @include('layouts._flash_message')
 
             @yield('content')
         </div>

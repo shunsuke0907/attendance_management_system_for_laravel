@@ -162,3 +162,75 @@ sqlite3 database.sqlite
 cd database/
 sqlite3 database.sqlite
 exit
+cd code/
+php artisan make:controller SessionsController
+php artisan routes
+php artisan route:list
+npm install popper.js
+cd ../
+git add -A
+git commit -m "[WIP] ユーザーのログイン周りの実装"
+git branch
+git checkout master
+git merge feat/actions_users
+git vbranch
+git checkout feat/actions_users
+git branch
+exit
+cd code/database/
+sqlite3 database.sqlite
+cd code/
+cd
+ls -la
+cd code/
+ls -la
+cd storage/logs/
+ls -la
+cd ../../
+php artisan make:middleware VerifyLogin
+php artisan make:middleware VerifyCorrectUser
+php artisan make:middleware VerifyAdmin
+history|grep php artisan make
+history|grep artisan
+ls -la
+exit
+cd code/database/
+sqlite3 database.sqlite
+exit
+cd code/database/
+sqlite3 database.sqlite
+exirt
+exit
+cd code/database/
+sqlite3 database.sqlite
+exit
+cd code/
+exit
+cd code/
+composer dump-autoload
+npm install
+nohup npm run watch > /dev/null &
+node -v
+npm -v
+npm run dev
+npm run watch-poll
+npm run dev
+npm install
+npm install popper.js
+composer update
+npm install --save-dev bootstrap@4.0.0
+yarn install && yarn production
+npm run watch-poll
+exit
+cd code/database/
+sqlite3 database.sqlite
+exit
+cd code/
+npm run watch-poll
+exit
+cd code/
+npm run watch-poll
+exit
+cd code/
+make up
+exit

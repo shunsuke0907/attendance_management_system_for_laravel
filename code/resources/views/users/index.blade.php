@@ -6,5 +6,14 @@ $headTitle = 'ユーザー一覧';
 
 @section('content')
 <h1>ユーザー一覧</h1>
-<p>このページはユーザー一覧用です</p>
+
+{{ $users->links() }}
+
+<ul class="users">
+    @foreach ($users as $user)
+        @include('users._user')
+    @endforeach
+</ul>
+
+{{ $users->links() }}
 @endsection

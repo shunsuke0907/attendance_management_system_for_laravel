@@ -14,9 +14,11 @@ class SessionsController extends Controller
      * ログインページ
      * @return void
      */
-    public function add()
+    public function add(Request $request)
     {
-        return view('sessions.add');
+        $url = ($request->query('requestUrl')) ? $request->query('requestUrl') : null;
+
+        return view('sessions.add', compact('url'));
     }
 
     /**
@@ -33,7 +35,7 @@ class SessionsController extends Controller
         if ($user) {
             Auth::loginUsingId($user->id);
             session()->flash('success', 'ログインしました');
-            $route = 'users/' . $user->id;
+            $route = setRedirect($user, $request->requestUrl);
         } else {
             session()->flash('error', 'メールアドレスとパスワードの情報が一致しませんでした');
             $route = 'login';

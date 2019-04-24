@@ -8,7 +8,7 @@ $headTitle = 'ログイン';
 <h1>ログイン</h1>
 
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6 offset-md-3">
         <form action={{ url('login') }} accept-charset="UTF-8" method="post">
             @csrf {{-- CSRF保護 --}}
             @method('POST') {{-- 疑似フォームメソッド --}}
@@ -18,6 +18,8 @@ $headTitle = 'ログイン';
 
             <label for="session_password">パスワード</label>
             <input type="password" name="session[password]" id="session_password" class="form-control" required>
+
+            <input type="hidden" name="requestUrl" value="{{ $url }}">
 
             <input type="submit" name="commit" value="ログインする" class="btn btn-primary" data-disable-with="ログインする">
         </form>

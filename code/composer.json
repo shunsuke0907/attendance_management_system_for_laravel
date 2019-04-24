@@ -40,7 +40,9 @@
             "database/factories"
         ],
         "files": [
-            "app/Helpers/StaticPagesHelper.php"
+            "app/Helpers/SessionsHelper.php",
+            "app/Helpers/StaticPagesHelper.php",
+            "app/Helpers/UsersHelper.php"
         ]
     },
     "autoload-dev": {

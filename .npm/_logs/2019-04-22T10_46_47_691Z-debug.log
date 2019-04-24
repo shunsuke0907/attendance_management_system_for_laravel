@@ -1,0 +1,15 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'run', 'watch-poll' ]
+2 info using npm@6.7.0
+3 info using node@v10.15.1
+4 verbose run-script [ 'prewatch-poll', 'watch-poll', 'postwatch-poll' ]
+5 info lifecycle @~prewatch-poll: @
+6 info lifecycle @~watch-poll: @
+7 verbose lifecycle @~watch-poll: unsafe-perm in lifecycle true
+8 verbose lifecycle @~watch-poll: PATH: /usr/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/home/vagrant/code/node_modules/.bin:/home/vagrant/.composer/vendor/bin:/usr/local/go/bin:/home/vagrant/.rbenv/plugins/ruby-build/bin:/home/vagrant/.rbenv/shims:/home/vagrant/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vagrant/.dotnet/tools
+9 verbose lifecycle @~watch-poll: CWD: /home/vagrant/code
+10 silly lifecycle @~watch-poll: Args: [ '-c', 'npm run watch -- --watch-poll' ]
+11 timing npm Completed in 595069ms
+12 error cb() never called!
+13 error This is an error with npm itself. Please report this error at:
+14 error <https://npm.community>
