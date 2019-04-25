@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Observers\UserObserver;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -51,4 +53,16 @@ class User extends Authenticatable
     //     'designated_working_start_time' => '',
     //     'designated_working_end_time' => ''
     // ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        User::observe(new UserObserver); // オブザーバーを使用したイベントのフック
+    }
 }

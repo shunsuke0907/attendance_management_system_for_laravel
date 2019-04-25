@@ -234,3 +234,28 @@ exit
 cd code/
 make up
 exit
+cd code/
+cd database/
+sqlite3 database.sqlite
+exit
+cd code/
+git branch
+cd ../
+git branch
+git diff
+git branch
+git add -A
+git commit -m "ユーザーの一覧、編集、削除no"
+git commit --amend -m "ユーザーの一覧、編集、削除、ログイン、ログアウトの機能を追加"
+git log
+git diff
+git branch
+git checkout master
+git branch
+git merge feat/actions_users
+git branch
+git push origin master
+git branch
+git checkout -b feat/users_basic_information
+git branch
+exit

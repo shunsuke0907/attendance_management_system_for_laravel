@@ -126,6 +126,11 @@ class UsersController extends Controller
     {
         // FIXME: ここにバリデーション処理を追加
 
+        // var_dump('updateUserInfo ===================');
+        // var_dump($request->user['designated_working_start_time']);
+        // var_dump($request->user['designated_working_end_time']);
+        // die;
+
         if ($request->user['name']) $user->name = $request->user['name'];
         if ($request->user['email']) $user->email = $request->user['email'];
         if ($request->user['department']) $user->department = $request->user['department'];

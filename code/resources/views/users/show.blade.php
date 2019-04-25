@@ -12,19 +12,23 @@ $headTitle = '勤怠表示';
                 &emsp;#年#月　時間管理表&emsp;
             </td>
             <td>
-                指定勤務開始時間：<br>
-                指定勤務終了時間：
+                指定勤務開始時間：{{ reshapeFormatTime($user->designated_working_start_time) }}<br>
+                指定勤務終了時間：{{ reshapeFormatTime($user->designated_working_end_time) }}
             </td>
-            <td colspan = "2">基本時間：{{ $user->basic_time }}</td>
+            <td colspan = "2">基本時間：{{ reshapeFormatBasicTime($user->basic_time) }}</td>
             <td>初日：</td>
         </tr>
         <tr>
             <td>所属：{{ $user->department }}</td>
             <td>氏名：{{ $user->name }}</td>
-            <td>コード：</td>
+            <td>社員番号：{{ $user->employee_number }}</td>
             <td>出勤日数：日</td>
             <td>締日：</td>
-    </tr>
+        </tr>
     </table>
+
+    <div>
+        {{ $user }}
+    </div>
 </div>
 @endsection

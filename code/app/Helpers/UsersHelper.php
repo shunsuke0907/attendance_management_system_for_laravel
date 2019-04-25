@@ -1,4 +1,7 @@
 <?php
+
+use Carbon\Carbon;
+
 if (! function_exists('isAdmin')) {
 
     /**
@@ -8,6 +11,33 @@ if (! function_exists('isAdmin')) {
     function isAdmin()
     {
         return (boolean) Auth::user()->is_admin;
+    }
+}
+
+if (! function_exists('reshapeFormatBasicTime')) {
+
+    /**
+     * 基本時間の値を、指定のフォーマットにして返す
+     * @return string ○○時間に整形した値
+     */
+    function reshapeFormatBasicTime($datetime)
+    {
+        $dt = Carbon::parse($datetime);
+        $timeFormat = (($dt->hour * 60) + $dt->minute)/60.0;
+
+        return number_format($timeFormat, 2);
+    }
+}
+
+if (! function_exists('reshapeFormatTime')) {
+
+    /**
+     * datetimeのフォーマットの値を、HH:MM に整形して返す
+     * @return string HH:MM に整形した値
+     */
+    function reshapeFormatTime($datetime)
+    {
+        return ($datetime) ? date('H:i', strtotime($datetime)) : null;
     }
 }
 
