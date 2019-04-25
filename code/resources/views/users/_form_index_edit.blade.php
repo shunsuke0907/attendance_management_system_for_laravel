@@ -13,6 +13,15 @@
     <label for="user_department">所属</label>
     <input type="text" name="user[department]" @isset($user->department)value={{ $user->department }}@endisset id="user_department" class="form-control">
 
+    <label for="user_position">役職</label>
+    {{-- {{ Form::select('position',  User::POSITION_TYPE_JAPANESE, null, ['class' => 'form-control', 'id' => 'user_position']) }} --}}
+
+    <select name="user[position]" class="form-control">
+        @foreach(selectUserPosition() as $key => $value)
+            <option value={{ $key }} @if((int) $user->position === (int) $key) selected @endif>{{ $value }}</option>
+        @endforeach
+    </select>
+
     <label for="user_employee_number">社員番号</label>
     <input type="text" name="user[employee_number]" @isset($user->employee_number)value={{ $user->employee_number }}@endisset id="user_employee_number" class="form-control">
 

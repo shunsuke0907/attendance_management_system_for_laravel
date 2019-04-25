@@ -12,6 +12,19 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const POSITION_USER = 1;
+    const POSITION_SUPERIOR = 2;
+
+    const POSITION_TYPE_JAPANESE = [
+        self::POSITION_USER => '一般',
+        self::POSITION_SUPERIOR => '上長'
+    ];
+
+    const POSITION_TYPE_ENGLISH = [
+        self::POSITION_USER => 'user',
+        self::POSITION_SUPERIOR => 'superior'
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -37,6 +50,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'position' => 'integer',
     ];
 
     // public static $rules = [
@@ -64,5 +78,29 @@ class User extends Authenticatable
         parent::boot();
 
         User::observe(new UserObserver); // オブザーバーを使用したイベントのフック
+    }
+
+    // hasMany
+
+    public function attendances()
+    {
+        return $this->hasMany('App\Models\Attendance');
+    }
+
+    public function attendance_approval_requests()
+    {
+        return $this->hasMany('App\Models\AttendanceApprovalRequest');
+    }
+
+    public function attendance_edit_requests()
+    {
+        return $this->hasMany('App\Models\AttendanceEditRequest');
+    }
+
+    // belongsTo
+
+    public function base()
+    {
+        return $this->belongsTo('App\Models\Base');
     }
 }

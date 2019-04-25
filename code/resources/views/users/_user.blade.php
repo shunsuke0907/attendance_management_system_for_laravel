@@ -1,5 +1,5 @@
 <li>
-    <div>{{ $user->name }}（{{ $user->position }}）</div>
+    <div>{{ $user->name }}（{{ ($user->is_admin) ? '管理者' : positionInJapanese($user) }}）</div>
 
     @component('components.btn_delete')
         @slot('table', 'users')

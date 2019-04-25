@@ -259,3 +259,43 @@ git branch
 git checkout -b feat/users_basic_information
 git branch
 exit
+git branch
+git add -A
+git commit -m "基本情報の表示の集計"
+git branch
+git kcheckout master
+git branch
+git checkout master
+git branch
+git merge feat/users_basic_information
+git branch
+git push origin master
+git diff
+git branch
+git cherkout -b feat/show_attendances
+git branch
+git checkout -b feat/show_attendances
+git branch
+cd code/
+history|grep migration
+php artisan make:migration create_attendances_table
+history|grep database/
+touch database/datavase.sqlite
+php artisan migrate
+history|grep make:model
+php artisan make:model Attendance
+php artisan make:migration create_attendance_approval_requests_table
+php artisan migrate
+history|grep database/
+touch database/datavase.sqlite
+php artisan migrate
+php artisan make:model Models/AttendanceApprovalRequest
+php artisan make:migration create_attendance_edit_requests_table
+php artisan migrate
+touch database/datavase.sqlite
+php artisan migrate
+php artisan migrate:refresh
+php artisan migrate
+php artisan make:model Models/AttendanceEditRequest
+exirt
+exit

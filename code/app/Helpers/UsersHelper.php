@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 use Carbon\Carbon;
 
 if (! function_exists('isAdmin')) {
@@ -18,6 +20,7 @@ if (! function_exists('reshapeFormatBasicTime')) {
 
     /**
      * 基本時間の値を、指定のフォーマットにして返す
+     * @param datetime $datetime
      * @return string ○○時間に整形した値
      */
     function reshapeFormatBasicTime($datetime)
@@ -33,6 +36,7 @@ if (! function_exists('reshapeFormatTime')) {
 
     /**
      * datetimeのフォーマットの値を、HH:MM に整形して返す
+     * @param datetime $datetime
      * @return string HH:MM に整形した値
      */
     function reshapeFormatTime($datetime)
@@ -41,21 +45,40 @@ if (! function_exists('reshapeFormatTime')) {
     }
 }
 
-if (! function_exists('positionInEnglish')) {
+if (! function_exists('selectPosition')) {
 
     /**
      * 該当ユーザーの役職が英語で欲しい時に変換して返す
      * @return bool
      */
+    function selectUserPosition()
+    {
+        return User::POSITION_TYPE_JAPANESE;
+    }
+}
+
+if (! function_exists('positionInEnglish')) {
+
+    /**
+     * 該当ユーザーの役職が英語で欲しい時に変換して返す
+     * @param object $user 該当のユーザー情報
+     * @return string 英語の役職名
+     */
     function positionInEnglish($user)
     {
-        switch ($user->position) {
-            case 0:
-                return 'user';
-            case 1:
-                return 'superior';
-            default:
-                return null;
-        }
+        return User::POSITION_TYPE_ENGLISH[$user->position];
+    }
+}
+
+if (! function_exists('positionInJapanese')) {
+
+    /**
+     * 該当ユーザーの役職が日本語で欲しい時に変換して返す
+     * @param object $user 該当のユーザー情報
+     * @return string 日本語の役職名
+     */
+    function positionInJapanese($user)
+    {
+        return User::POSITION_TYPE_JAPANESE[$user->position];
     }
 }
