@@ -13,11 +13,11 @@ $headTitle = '勤怠表示';
             </td>
             <td>
                 指定勤務開始時間：
-                {{ ($user->designated_working_start_time) ? reshapeFormatTime($user->designated_working_start_time) : '未設定' }}<br>
+                {{ ($user->designated_working_start_time) ? getTime($user->designated_working_start_time, 'G') : '未設定' }}<br>
                 指定勤務終了時間：
-                {{ ($user->designated_working_end_time) ? reshapeFormatTime($user->designated_working_end_time) : '未設定' }}
+                {{ ($user->designated_working_end_time) ? getTime($user->designated_working_end_time, 'G') : '未設定' }}
             </td>
-            <td colspan = "2">基本時間：{{ reshapeFormatBasicTime($user->basic_time) }}</td>
+            <td colspan = "2">基本時間：{{ formatBasicTime($user->basic_time) }}</td>
             <td>初日：</td>
         </tr>
         <tr>

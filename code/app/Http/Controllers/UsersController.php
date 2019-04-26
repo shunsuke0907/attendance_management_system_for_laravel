@@ -17,8 +17,9 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::orderBy('id')->paginate(5);
+        $positionList = User::POSITION_TYPE_JAPANESE;
 
-        return view('users.index', compact('users'));
+        return view('users.index', compact('users', 'positionList'));
     }
 
     /**
@@ -103,10 +104,6 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        // var_dump('destroy =================');
-        // var_dump($user->name);
-        // die;
-
         $userId = $user->id;
         $userName = $user->name;
 
@@ -125,11 +122,6 @@ class UsersController extends Controller
     public function updateUserInfo(Request $request, User $user)
     {
         // FIXME: ここにバリデーション処理を追加
-
-        // var_dump('updateUserInfo ===================');
-        // var_dump($request->user['position']);
-        // // var_dump($request->user['designated_working_end_time']);
-        // die;
 
         if ($request->user['name']) $user->name = $request->user['name'];
         if ($request->user['email']) $user->email = $request->user['email'];

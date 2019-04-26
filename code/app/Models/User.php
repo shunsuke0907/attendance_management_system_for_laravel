@@ -103,4 +103,23 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Base');
     }
+
+    // custom method
+
+    /**
+     * 役職のテキストを返す
+     * @param string $languageType フォーマットの言語を指定
+     * @return string/integer 指定のフラグに対応するフォーマット（言語の指定がない場合はフラグをそのまま返す）
+     */
+    public function getText($languageType = null)
+    {
+        switch ($languageType) {
+            case 'japanese':
+                return self::POSITION_TYPE_JAPANESE[$this->position];
+            case 'english':
+                return self::POSITION_TYPE_ENGLISH[$this->position];
+            default:
+                return $this->position;
+        }
+    }
 }

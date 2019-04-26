@@ -9,8 +9,8 @@
                         admin
                     </div>
                 @else
-                    <div class="user_position font_color_{{ positionInEnglish(Auth::user()) }}">
-                        {{ positionInEnglish(Auth::user()) }}
+                    <div class="user_position font_color_{{ Auth::user()->getText('english') }}">
+                        {{ Auth::user()->getText('english') }}
                     </div>
                 @endif
             @endif

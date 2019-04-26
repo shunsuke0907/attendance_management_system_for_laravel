@@ -42,6 +42,7 @@
             "database/factories"
         ],
         "files": [
+            "app/Helpers/Common/TimeHelper.php",
             "app/Helpers/SessionsHelper.php",
             "app/Helpers/StaticPagesHelper.php",
             "app/Helpers/UsersHelper.php"

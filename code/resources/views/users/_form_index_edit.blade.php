@@ -17,7 +17,7 @@
     {{-- {{ Form::select('position',  User::POSITION_TYPE_JAPANESE, null, ['class' => 'form-control', 'id' => 'user_position']) }} --}}
 
     <select name="user[position]" class="form-control">
-        @foreach(selectUserPosition() as $key => $value)
+        @foreach($positionList as $key => $value)
             <option value={{ $key }} @if((int) $user->position === (int) $key) selected @endif>{{ $value }}</option>
         @endforeach
     </select>
@@ -29,13 +29,13 @@
     <input type="text" name="user[card_number]" @isset($user->employee_card_numbernumber)value={{ $user->card_number }}@endisset id="user_card_number" class="form-control">
 
     <label for="user_basic_time">基本時間</label>
-    <input type="time" name="user[basic_time]" @isset($user->basic_time)value={{ reshapeFormatTime($user->basic_time) }}@endisset id="user_basic_time" class="form-control">
+    <input type="time" name="user[basic_time]" @isset($user->basic_time)value={{ getTime($user->basic_time, 'H') }}@endisset id="user_basic_time" class="form-control">
 
     <label for="user_designated_working_start_time">指定勤務開始時間</label>
-    <input type="time" name="user[designated_working_start_time]" @isset($user->designated_working_start_time)value={{ reshapeFormatTime($user->designated_working_start_time) }}@endisset id="user_designated_working_start_time" class="form-control">
+    <input type="time" name="user[designated_working_start_time]" @isset($user->designated_working_start_time)value={{ getTime($user->designated_working_start_time, 'H') }}@endisset id="user_designated_working_start_time" class="form-control">
 
     <label for="user_designated_working_end_time">指定勤務終了時間</label>
-    <input type="time" name="user[designated_working_end_time]" @isset($user->designated_working_end_time)value={{ reshapeFormatTime($user->designated_working_end_time) }}@endisset id="user_designated_working_end_time" class="form-control">
+    <input type="time" name="user[designated_working_end_time]" @isset($user->designated_working_end_time)value={{ getTime($user->designated_working_end_time, 'H') }}@endisset id="user_designated_working_end_time" class="form-control">
 
     <label for="user_password">パスワード</label>
     <input type="password" name="user[password]" id="user_password" class="form-control">

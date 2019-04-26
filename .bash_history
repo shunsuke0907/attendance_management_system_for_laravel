@@ -299,3 +299,31 @@ php artisan migrate
 php artisan make:model Models/AttendanceEditRequest
 exirt
 exit
+cd code/
+composer require kris/laravel-form-builder
+history|grep make:migration
+php artisan make:migration change_column_to_users_table
+history|grep migration
+history|grep make:migration
+history|grep migrat
+php artisan migrate
+cd ../
+git diff
+git add -A
+git commit -m "ユーザーの表示関連の修正"
+git branch
+git diff
+git checkout master
+git branch
+git merge feat/show_attendances
+git diff
+git branch
+git push origin master
+git diff
+git branch
+git checkout feat/show_attendances
+git branch
+exit
+cd code/database/
+sqlite3 database.sqlite
+exit
