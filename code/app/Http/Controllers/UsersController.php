@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+
+use Config;
 
 use App\Models\User;
 
@@ -16,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id')->paginate(5);
+        $users = User::orderBy('id')->paginate(10);
         $positionList = User::POSITION_TYPE_JAPANESE;
 
         return view('users.index', compact('users', 'positionList'));
@@ -34,7 +38,11 @@ class UsersController extends Controller
 
         $user = Auth::user();
 
-        return view('users.show', compact('user'));
+        $startDate = Carbon::now()->startOfMonth();
+        $endDate = Carbon::now()->endOfMonth();
+        $weeks = Config::get('datetime.week');
+
+        return view('users.show', compact('user', 'startDate', 'endDate', 'weeks'));
     }
 
     /**

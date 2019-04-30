@@ -7,30 +7,31 @@ $headTitle = '勤怠表示';
 @section('content')
 <div>
     <table class = "table-bordered table-condensed">
-        <tr>
-            <td>
-                &emsp;#年#月　時間管理表&emsp;
-            </td>
-            <td>
-                指定勤務開始時間：
-                {{ ($user->designated_working_start_time) ? getTime($user->designated_working_start_time, 'G') : '未設定' }}<br>
-                指定勤務終了時間：
-                {{ ($user->designated_working_end_time) ? getTime($user->designated_working_end_time, 'G') : '未設定' }}
-            </td>
-            <td colspan = "2">基本時間：{{ formatBasicTime($user->basic_time) }}</td>
-            <td>初日：</td>
-        </tr>
-        <tr>
-            <td>所属：{{ ($user->department) ? $user->department : '未設定' }}</td>
-            <td>氏名：{{ $user->name }}</td>
-            <td>社員番号：{{ ($user->employee_number) ? $user->employee_number : '未設定' }}</td>
-            <td>出勤日数：日</td>
-            <td>締日：</td>
-        </tr>
+        @include('users._user_info')
     </table>
 
-    <div>
-        {{ $user }}
-    </div>
+    @if ($user->position === 1)
+        <div>
+            <div class="margin">
+                <a class="red" id="attendance" data-remote="true" href="#">【所属長承認申請のお知らせ】</a>
+                <span class="red2 box">###件の申請があります</span>
+            </div>
+
+            <div class="">【勤怠変更のお知らせ】</div>
+
+            <div class="margin">
+                <a class="red" id="overtime" data-remote="true" href="#">【残業申請のお知らせ】</a>
+                <span class="red2 box">###件の申請があります</span>
+            </div>
+        </div>
+    @endif
+
+    <a href="#" class="btn btn-primary">勤怠を編集</a>
+    <a href="#" class="btn btn-primary">CSV出力</a>
+    <a href="#" class="btn btn-primary">勤怠修正ログ（承認済）</a>
+
+    <table class = "table-bordered table-striped table-condensed">
+        @include('users._attendance_list')
+    </table>
 </div>
 @endsection

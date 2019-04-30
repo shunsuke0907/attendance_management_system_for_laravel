@@ -327,3 +327,27 @@ exit
 cd code/database/
 sqlite3 database.sqlite
 exit
+cd code/database/
+sqlite3 database.sqlite
+exit
+cd code/
+php artisan make:migration change_column_to_attendance_approval_requests_table
+php artisan migrate
+php artisan make:migration change_column_to_attendance_edit_requests_table
+php artisan migrate
+composer dump-autoload
+cd ../
+git branch
+git add -A
+git commit -m "時間とポジションの表示を修正"
+git branch
+git checkout master
+git branch
+git merge feat/show_attendances
+git branhc
+git push origin master
+git branch
+git checkout feat/show_attendances
+git branch
+vagrant halt
+exit

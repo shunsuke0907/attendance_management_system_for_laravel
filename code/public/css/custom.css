@@ -37,6 +37,18 @@ textarea {
   margin-bottom: 10px;
 }
 
+.sunday {
+  color: red;
+}
+
+.saturday {
+  color: blue;
+}
+
+.weekday {
+  color: #090909;
+}
+
 .txt_decoration_n:hover {
   text-decoration: none;
 }
